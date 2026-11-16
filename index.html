@@ -5,8 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#090d17">
-  <meta name="description" content="A practical LaTeX reference guide for mathematical equations in Apple Pages, Keynote, and Numbers.">
-  <title>Math Equations — LaTeX Reference Guide</title>
+
+  <meta name="description"
+    content="Math Equations in Pages, Keynote, and Numbers — a practical LaTeX reference guide by Arkadiusz Liber.">
+
+  <title>Math Equations | LaTeX Reference Guide</title>
 
   <style>
     :root {
@@ -19,9 +22,13 @@
       --accent: #a5b4fc;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
@@ -29,20 +36,25 @@
       background: var(--bg);
       color: var(--text);
       font-family: Inter, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
+        "Segoe UI", Arial, sans-serif;
       line-height: 1.65;
     }
 
-    a { color: inherit; }
+    a {
+      color: inherit;
+    }
 
     .container {
       width: min(1080px, 90%);
-      margin: auto;
+      margin: 0 auto;
     }
 
+    /* Navigation */
+
     header {
-      padding: 25px 0;
+      padding: 24px 0;
       border-bottom: 1px solid var(--line);
+      background: #090d17;
     }
 
     .nav {
@@ -53,45 +65,54 @@
     }
 
     .brand {
-      font-weight: 750;
       font-size: 19px;
+      font-weight: 750;
       letter-spacing: -0.5px;
     }
 
-    .brand span { color: var(--accent); }
+    .brand span {
+      color: var(--accent);
+    }
 
     .nav-link {
       color: var(--muted);
       font-size: 14px;
       text-decoration: none;
+      transition: color .2s;
     }
 
-    .nav-link:hover { color: white; }
+    .nav-link:hover {
+      color: white;
+    }
+
+    /* Hero */
 
     .hero {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.15fr 0.85fr;
       align-items: center;
       gap: 65px;
-      padding: 105px 0 95px;
+      padding: 95px 0 100px;
     }
 
     .eyebrow {
       color: var(--accent);
       text-transform: uppercase;
       font-size: 12px;
-      letter-spacing: 2.5px;
+      letter-spacing: 2px;
       font-weight: 700;
     }
 
     h1 {
-      font-size: clamp(39px, 5.5vw, 65px);
+      font-size: clamp(38px, 5.5vw, 64px);
       line-height: 1.12;
       letter-spacing: -2.5px;
       margin: 22px 0;
     }
 
-    h1 span { color: var(--accent); }
+    h1 span {
+      color: var(--accent);
+    }
 
     .subtitle {
       font-size: 20px;
@@ -115,7 +136,7 @@
     .button {
       display: inline-block;
       margin-top: 25px;
-      padding: 14px 25px;
+      padding: 14px 26px;
       border-radius: 9px;
       background: var(--accent);
       color: #10152a;
@@ -130,37 +151,56 @@
       background: #c7d2fe;
     }
 
-    /* Original vector illustration */
+    /* Original book cover */
+
     .artwork {
-      position: relative;
-      padding: 28px;
-      background: linear-gradient(145deg, #18233a, #101624);
+      width: 100%;
+      max-width: 390px;
+      margin: 0 auto;
+      padding: 16px;
+      background: linear-gradient(
+        145deg,
+        #18233a,
+        #101624
+      );
       border: 1px solid #34415b;
-      border-radius: 24px;
-      box-shadow: 0 25px 70px #0006;
+      border-radius: 20px;
+      box-shadow:
+        0 25px 70px rgba(0, 0, 0, .5),
+        0 0 55px rgba(129, 140, 248, .06);
     }
 
-    .artwork svg {
+    .book-cover {
       display: block;
       width: 100%;
       height: auto;
+      border-radius: 5px;
     }
 
+    .cover-caption {
+      margin: 13px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    /* Content */
+
     .section {
-      padding: 65px 0 90px;
+      padding: 70px 0 90px;
       border-top: 1px solid var(--line);
     }
 
     h2 {
-      font-size: 29px;
+      font-size: 30px;
       letter-spacing: -0.8px;
-      margin: 0 0 14px;
+      margin: 10px 0 14px;
     }
 
     .section-intro {
       color: var(--muted);
       max-width: 680px;
-      margin-bottom: 32px;
+      margin-bottom: 35px;
     }
 
     .features {
@@ -174,9 +214,15 @@
       border: 1px solid var(--line);
       border-radius: 15px;
       padding: 27px;
+      transition: border-color .2s, transform .2s;
     }
 
-    .feature .symbol {
+    .feature:hover {
+      border-color: #6674a5;
+      transform: translateY(-3px);
+    }
+
+    .symbol {
       color: var(--accent);
       font-family: Georgia, serif;
       font-size: 31px;
@@ -194,6 +240,8 @@
       margin: 0;
     }
 
+    /* Formula example */
+
     .formula-card {
       background: #111827;
       border: 1px solid var(--line);
@@ -204,14 +252,15 @@
 
     .formula-card h3 {
       margin: 0 0 20px;
-      font-size: 16px;
+      font-size: 17px;
     }
 
     .equation {
       text-align: center;
       overflow-x: auto;
-      padding: 16px 0;
+      padding: 22px 0;
       font-size: 22px;
+      color: #e0e7ff;
     }
 
     .code {
@@ -219,7 +268,7 @@
       background: #080d17;
       border: 1px solid #263248;
       border-radius: 9px;
-      padding: 17px;
+      padding: 18px;
       overflow-x: auto;
       color: #c4b5fd;
       font-family: ui-monospace, SFMono-Regular,
@@ -233,6 +282,8 @@
       font-size: 13px;
       margin-top: 16px;
     }
+
+    /* Footer */
 
     footer {
       padding: 30px 0;
@@ -253,6 +304,12 @@
       text-decoration: none;
     }
 
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Mobile */
+
     @media (max-width: 760px) {
       .hero {
         grid-template-columns: 1fr;
@@ -260,26 +317,45 @@
         gap: 45px;
       }
 
-      .features { grid-template-columns: 1fr; }
+      .features {
+        grid-template-columns: 1fr;
+      }
 
-      h1 { letter-spacing: -1.5px; }
+      h1 {
+        letter-spacing: -1.5px;
+      }
 
-      .artwork { max-width: 470px; }
+      .artwork {
+        max-width: 350px;
+      }
 
-      .section { padding: 50px 0 65px; }
+      .section {
+        padding: 50px 0 65px;
+      }
+
+      .formula-card {
+        padding: 22px;
+      }
+
+      .equation {
+        font-size: 18px;
+      }
     }
   </style>
 
-  <!-- MathJax renders mathematically correct LaTeX -->
+  <!-- MathJax for accurate LaTeX rendering -->
   <script>
     window.MathJax = {
       tex: {
         inlineMath: [['\\(', '\\)']],
         displayMath: [['\\[', '\\]']]
       },
-      svg: { fontCache: 'global' }
+      svg: {
+        fontCache: 'global'
+      }
     };
   </script>
+
   <script defer
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
   </script>
@@ -287,23 +363,39 @@
 
 <body>
 
+  <!-- Navigation -->
+
   <header>
     <div class="container nav">
-      <div class="brand">Math<span>Equations.</span></div>
+
+      <div class="brand">
+        Math<span>Equations.</span>
+      </div>
+
       <a class="nav-link"
          href="https://writingin.com/math_equations_pages_latex/math_equations_pages_latex.html"
-         target="_blank" rel="noopener noreferrer">
-        Official book page ↗
+         target="_blank"
+         rel="noopener noreferrer">
+        Official Book Page ↗
       </a>
+
     </div>
   </header>
 
   <main>
-    <section class="container hero">
-      <div>
-        <div class="eyebrow">The Complete LaTeX Reference Guide</div>
 
-        <h1>Beautiful mathematics.<br>
+    <!-- Book introduction -->
+
+    <section class="container hero">
+
+      <div class="hero-content">
+
+        <div class="eyebrow">
+          The Complete LaTeX Reference Guide
+        </div>
+
+        <h1>
+          Beautiful mathematics.<br>
           <span>Precisely written.</span>
         </h1>
 
@@ -312,221 +404,173 @@
         </p>
 
         <p class="description">
-          A practical reference guide to writing professional
-          mathematical expressions in Apple Pages, Keynote,
-          and Numbers using LaTeX. Explore fractions, Greek
-          letters, matrices, vectors, symbols, spacing,
-          and advanced equation formatting through verified,
-          ready-to-use examples.
+          A comprehensive, practical reference for
+          creating professional mathematical expressions
+          directly in Apple Pages, Keynote, and Numbers.
+          Discover LaTeX notation, mathematical symbols,
+          matrices, vectors, spacing, fonts, and advanced
+          formatting through verified, ready-to-use examples.
         </p>
 
-        <p class="author">By <strong>Arkadiusz Liber</strong></p>
+        <p class="author">
+          By <strong>Arkadiusz Liber</strong>
+        </p>
 
         <a class="button"
            href="https://writingin.com/math_equations_pages_latex/math_equations_pages_latex.html"
-           target="_blank" rel="noopener noreferrer">
+           target="_blank"
+           rel="noopener noreferrer">
           Explore the Book ↗
         </a>
+
       </div>
+
+      <!-- Original front cover -->
 
       <div class="artwork">
-        <!-- Original illustration, not the book cover -->
-        <svg viewBox="0 0 440 480"
-             xmlns="http://www.w3.org/2000/svg"
-             role="img"
-             aria-label="Original illustration of a mathematical reference book with a correctly written Gaussian integral">
 
-          <defs>
-            <linearGradient id="cover" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#303f71"/>
-              <stop offset="100%" stop-color="#151d37"/>
-            </linearGradient>
+        <img
+          class="book-cover"
+          src="https://writingin.com/math_equations_pages_latex/assets/math_equations_pages_latex_front_cover.jpg"
+          alt="Original front cover of Math Equations in Pages, Keynote, and Numbers by Arkadiusz Liber"
+          width="700"
+          height="1000"
+          fetchpriority="high"
+        >
 
-            <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#a5b4fc"/>
-              <stop offset="100%" stop-color="#818cf8"/>
-            </linearGradient>
+        <p class="cover-caption">
+          Original book cover · WritingIn
+        </p>
 
-            <filter id="shadow">
-              <feDropShadow dx="0" dy="20" stdDeviation="16"
-                            flood-color="#000" flood-opacity=".45"/>
-            </filter>
-          </defs>
-
-          <!-- Background geometry -->
-          <circle cx="345" cy="110" r="95"
-                  fill="none" stroke="#6879b5"
-                  stroke-opacity=".2"/>
-          <circle cx="345" cy="110" r="65"
-                  fill="none" stroke="#6879b5"
-                  stroke-opacity=".2"/>
-          <path d="M0 390 L440 80 M0 450 L440 140"
-                stroke="#6879b5" stroke-opacity=".13"/>
-
-          <!-- Stylized book -->
-          <g filter="url(#shadow)">
-            <path d="M83 45 L350 61 L350 433 L83 415 Z"
-                  fill="url(#cover)" stroke="#7687c4"
-                  stroke-width="1.5"/>
-
-            <path d="M83 45 L100 51 L100 420 L83 415 Z"
-                  fill="#10172c"/>
-
-            <path d="M100 51 L350 61"
-                  stroke="#b2bdf5" stroke-opacity=".45"/>
-
-            <path d="M120 95 L318 107"
-                  stroke="#a5b4fc" stroke-width="2"/>
-
-            <text x="124" y="145"
-                  fill="#f1f5ff" font-size="28"
-                  font-family="Georgia, serif">
-              Math Equations
-            </text>
-
-            <text x="124" y="174"
-                  fill="#b4c1e6" font-size="14"
-                  font-family="Arial, sans-serif">
-              A LaTeX Reference Guide
-            </text>
-
-            <!-- Mathematical identity:
-                 Gaussian integral over the real line -->
-            <text x="130" y="267"
-                  fill="url(#glow)" font-size="39"
-                  font-family="Georgia, serif">
-              ∫
-            </text>
-            <text x="147" y="244"
-                  fill="#c7d2fe" font-size="12"
-                  font-family="Georgia, serif">
-              +∞
-            </text>
-            <text x="146" y="285"
-                  fill="#c7d2fe" font-size="12"
-                  font-family="Georgia, serif">
-              −∞
-            </text>
-            <text x="177" y="261"
-                  fill="#e0e7ff" font-size="24"
-                  font-family="Georgia, serif">
-              e
-            </text>
-            <text x="190" y="244"
-                  fill="#e0e7ff" font-size="15"
-                  font-family="Georgia, serif">
-              −x²
-            </text>
-            <text x="223" y="261"
-                  fill="#e0e7ff" font-size="24"
-                  font-family="Georgia, serif">
-              dx = √π
-            </text>
-
-            <path d="M125 312 L310 323"
-                  stroke="#a5b4fc" stroke-opacity=".45"/>
-
-            <text x="125" y="356"
-                  fill="#aab8e1" font-size="13"
-                  font-family="Arial, sans-serif">
-              PAGES · KEYNOTE · NUMBERS
-            </text>
-
-            <text x="125" y="389"
-                  fill="#e0e7ff" font-size="14"
-                  font-family="Arial, sans-serif">
-              Arkadiusz Liber
-            </text>
-          </g>
-
-          <!-- Decorative stars -->
-          <g fill="#c7d2fe">
-            <circle cx="380" cy="335" r="3"/>
-            <circle cx="43" cy="160" r="2"/>
-            <circle cx="391" cy="215" r="2"/>
-          </g>
-        </svg>
       </div>
+
     </section>
 
+    <!-- Book features -->
+
     <section class="section">
+
       <div class="container">
-        <div class="eyebrow">Inside the Guide</div>
-        <h2>From simple symbols to complex equations</h2>
+
+        <div class="eyebrow">
+          Inside the Guide
+        </div>
+
+        <h2>
+          From simple symbols to complex equations
+        </h2>
+
         <p class="section-intro">
-          Learn to create clear, consistent mathematical
-          notation directly in Apple's productivity apps.
+          Master mathematical typesetting in Apple's
+          productivity applications with practical
+          explanations and verified LaTeX examples.
         </p>
 
         <div class="features">
+
           <article class="feature">
+
             <div class="symbol">∑</div>
+
             <h3>Essential Notation</h3>
+
             <p>
               Fractions, exponents, roots, Greek letters,
-              operators, and mathematical symbols.
+              operators, mathematical symbols, and spacing.
             </p>
+
           </article>
 
           <article class="feature">
+
             <div class="symbol">[ ]</div>
+
             <h3>Advanced Structures</h3>
+
             <p>
               Matrices, vectors, aligned expressions,
-              and more sophisticated equation layouts.
+              mathematical fonts, colors, and sophisticated
+              equation layouts.
             </p>
+
           </article>
 
           <article class="feature">
+
             <div class="symbol">𝑓(x)</div>
+
             <h3>Practical LaTeX</h3>
+
             <p>
-              Verified code examples you can copy,
-              adapt, and reuse in technical documents.
+              Verified examples and reusable code
+              for creating clear, consistent mathematical
+              notation in technical documents.
             </p>
+
           </article>
+
         </div>
 
+        <!-- Mathematical example -->
+
         <div class="formula-card">
-          <h3>A classic mathematical example</h3>
+
+          <h3>
+            A classic example of mathematical typesetting
+          </h3>
 
           <div class="equation">
             \[
               \int_{-\infty}^{+\infty}
-              e^{-x^2}\,dx = \sqrt{\pi}
+              \mathrm{e}^{-x^2}\,\mathrm{d}x
+              = \sqrt{\pi}
             \]
           </div>
 
           <p class="note">
-            The Gaussian integral is a well-known,
-            mathematically correct identity.
-            It is shown here as an illustration
-            of professional mathematical typesetting.
+            The Gaussian integral is a classical mathematical
+            identity. Notice the upright roman letters
+            e and d, while the variable x remains italic.
           </p>
 
-          <div class="code">\int_{-\infty}^{+\infty} e^{-x^2}\,dx = \sqrt{\pi}</div>
+          <div class="code">\int_{-\infty}^{+\infty} \mathrm{e}^{-x^2}\,\mathrm{d}x = \sqrt{\pi}</div>
 
           <p class="note">
-            This example is rendered using MathJax.
-            The book focuses on LaTeX expressions
-            supported by the equation editors
-            in Pages, Keynote, and Numbers.
+            The equation is rendered using MathJax.
+            This example demonstrates precise mathematical
+            notation and consistent typography.
           </p>
+
         </div>
+
       </div>
+
     </section>
+
   </main>
 
+  <!-- Footer -->
+
   <footer>
+
     <div class="container footer-inner">
-      <span>Math Equations — LaTeX Reference Guide</span>
+
+      <span>
+        Math Equations — LaTeX Reference Guide
+      </span>
+
       <span>
         Independent book showcase ·
-        <a href="https://writingin.com/math_equations_pages_latex/math_equations_pages_latex.html">
-          Official source
+        <a
+          href="https://writingin.com/math_equations_pages_latex/math_equations_pages_latex.html"
+          target="_blank"
+          rel="noopener noreferrer">
+          Official Website
         </a>
       </span>
+
     </div>
+
   </footer>
 
 </body>
